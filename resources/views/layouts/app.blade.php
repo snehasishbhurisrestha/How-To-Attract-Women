@@ -92,10 +92,10 @@
         </div> --}}
 
         <!-- Footer Section starts-->
-        <footer>
+        <footer style="padding: 0.75rem 0 !important;">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-9 col-12">
+                    <div class="col-md-12 col-12 text-center">
                         <p class="footer-text f-w-600 mb-0">Copyright © 2026 {{ config('app.name', 'Laravel') }}. All rights reserved</p>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 <nav>
     <div class="app-logo">
         <a class="logo d-inline-block" href="{{ route('dashboard') }}">
-            <h1>Admin</h1>
+            <h1>Dashboard</h1>
         </a>
 
         <span class="bg-light-primary toggle-semi-nav d-flex-center">
