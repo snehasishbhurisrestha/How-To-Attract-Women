@@ -2020,6 +2020,8 @@
             }
         }
     </style>
+
+    {!! get_setting('header_script') !!}
 </head>
 
 <body>
@@ -2114,6 +2116,8 @@
         }, { threshold: .08 });
         document.querySelectorAll('.pp-card, .contact-card').forEach(el => obs.observe(el));
     </script>
+
+    {!! get_setting('footer_script') !!}
 </body>
 
 </html>

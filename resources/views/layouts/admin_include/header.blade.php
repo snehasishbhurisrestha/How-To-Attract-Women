@@ -1,7 +1,7 @@
 <header class="header-main">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-8 col-sm-6 d-flex align-items-center header-left p-0">
+            <div class="col-4 col-sm-6 d-flex align-items-center header-left p-0">
                 <span class="header-toggle ">
                     <i class="ph ph-squares-four"></i>
                 </span>
@@ -15,6 +15,12 @@
                         </div>
                     </form>
                 </div> --}}
+            </div>
+
+            <div class="col-4 col-sm-6 d-flex d-sm-none align-items-center justify-content-center header-center p-0">
+                <span class="text-center" style="font-size: 18px;">
+                    <strong>Dashboard</strong>
+                </span>
             </div>
 
             <div class="col-4 col-sm-6 d-flex align-items-center justify-content-end header-right p-0">
@@ -438,7 +444,7 @@
                             <i class="ph ph-sun-dim"></i>
                         </div>
                     </li>
-{{-- 
+                    {{-- 
                     <li class="header-notification">
                         <a aria-controls="notificationcanvasRight"
                         class="d-block head-icon position-relative bg-light-dark rounded-circle f-s-22 p-2"

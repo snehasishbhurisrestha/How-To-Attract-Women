@@ -1502,6 +1502,8 @@
             }
         }
     </style>
+
+    {!! get_setting('header_script') !!}
 </head>
 
 <body>
@@ -2175,7 +2177,9 @@
             });
 
         });
-        </script>
+    </script>
+
+    {!! get_setting('footer_script') !!}
 
 </body>
 

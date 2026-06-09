@@ -32,7 +32,12 @@
     "autoload-dev": {
         "psr-4": {
             "Tests\\": "tests/"
-        }
+        },
+        "files": [
+            "app/Helpers/Employee_Helper.php",
+            "app/Helpers/DateTime_Helper.php",
+            "app/Helpers/RolePermission_Helper.php"
+        ]
     },
     "scripts": {
         "setup": [
