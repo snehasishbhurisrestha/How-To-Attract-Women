@@ -34,9 +34,7 @@
             "Tests\\": "tests/"
         },
         "files": [
-            "app/Helpers/Employee_Helper.php",
-            "app/Helpers/DateTime_Helper.php",
-            "app/Helpers/RolePermission_Helper.php"
+            "app/Helpers/Employee_Helper.php"
         ]
     },
     "scripts": {

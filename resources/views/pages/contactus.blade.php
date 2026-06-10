@@ -303,7 +303,7 @@
         <a href="{{ route('contact-us') }}" class="active">Contact</a>
         <a href="{{ route('refund-policy') }}">Refund Policy</a>
     </div>
-    <div class="footer-copy">© 2026 Orbital Webworks · Made with ❤ in India</div>
+    <div class="footer-copy">Made with ❤ <a href="https://orbitalwebworks.com" target="_blank" style="color: rgba(255, 255, 255, .6);">Orbital Webworks</a></div>
 </footer>
 
 <script>

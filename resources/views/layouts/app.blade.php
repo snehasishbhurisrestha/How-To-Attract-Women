@@ -96,7 +96,8 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12 col-12 text-center">
-                        <p class="footer-text f-w-600 mb-0">Copyright © 2026 {{ config('app.name', 'Laravel') }}. All rights reserved</p>
+                        <p class="footer-text f-w-600 mb-0">Copyright © 2026 {{ config('app.name', 'Laravel') }}. Crafted with ❤
+                    by <a href="https://orbitalwebworks.com/" target="_blank">Orbital Webworks</a></p>
                     </div>
                 </div>
             </div>

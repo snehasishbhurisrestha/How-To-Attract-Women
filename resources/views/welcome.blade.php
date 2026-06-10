@@ -1503,6 +1503,22 @@
         }
     </style>
 
+    <style>
+        .footer-links_badge{
+            display: flex;
+            justify-content: center;
+           color:#B8960C;
+            font-weight: 600;
+            gap:20px
+        }
+        .footer-links_badge img{
+            height: 80px;
+            width: 100px;
+            object-fit: contain;
+            border-radius: 6px;
+        }
+    </style>
+
     {!! get_setting('header_script') !!}
 </head>
 
@@ -1851,12 +1867,17 @@
 
     <!-- Footer -->
     <footer>
-        <div class="footer-links_badge">
+        {{-- <div class="footer-links_badge">
 
             <span>✅ Trusted & Genuine</span>
             <span>⚡ Instant Download</span>
             <span>🔒 Secure Payment</span>
 
+        </div> --}}
+        <div class="footer-links_badge" style="display: flex;">
+            <span><img src="{{ asset('assets/IMG_1884.PNG') }}" alt="" height="80" width="100"></span>
+            <span><img src="{{ asset('assets/IMG_1885.PNG') }}" alt=""height="80" width="100"></span>
+            <span><img src="{{ asset('assets/IMG_1886.PNG') }}" alt="" height="80" width="100"></span>
         </div>
 
         <div class="footer-links">
