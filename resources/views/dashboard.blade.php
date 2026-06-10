@@ -565,7 +565,8 @@
             <span class="card-title"><i class="ti ti-list" style="font-size:15px;vertical-align:-2px;margin-right:5px;color:var(--primary)"></i>Recent Orders</span>
             {{-- <span class="card-act">View all <i class="ti ti-arrow-right" style="font-size:12px"></i></span> --}}
           </div>
-          <table>
+          <div class="table-responsive">
+            <table class="table">
             <thead>
               <tr>
                 <th>Order #</th>
@@ -597,6 +598,7 @@
               @endforelse
             </tbody>
           </table>
+          </div>
         </div>
 
         <div class="card">
@@ -604,12 +606,13 @@
             <span class="card-title"><i class="ti ti-world" style="font-size:15px;vertical-align:-2px;margin-right:5px;color:var(--primary)"></i>Latest Visitors</span>
             {{-- <span class="card-act">View all <i class="ti ti-arrow-right" style="font-size:12px"></i></span> --}}
           </div>
-          <table>
-            <thead>
-              <tr>
-                <th>IP Address</th>
-                <th>Page</th>
-                <th>Time</th>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>IP Address</th>
+                  <th>Page</th>
+                  <th>Time</th>
               </tr>
             </thead>
             <tbody>
@@ -624,6 +627,7 @@
               @endforelse
             </tbody>
           </table>
+          </div>
         </div>
 
       </div>
