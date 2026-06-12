@@ -194,7 +194,7 @@
 
         /* ── HEADER ── */
         header {
-            margin-top: 44px;
+            margin-top: 53px;
             position: sticky;
             top: 0;
             z-index: 100;
@@ -207,6 +207,12 @@
             justify-content: space-between;
             height: 66px;
             animation: slideDown .6s ease
+        }
+
+        @media (max-width: 768px) {
+            header {
+                justify-content: center;
+            }
         }
 
         @keyframes slideDown {
@@ -1359,8 +1365,9 @@
             }
 
             .logo {
-                font-size: 1rem;
-                letter-spacing: .05em
+                font-size: 31px;
+                letter-spacing: .05em;
+                font-weight: 800;
             }
 
             .about-wrap {
@@ -1543,7 +1550,7 @@
             Only for ₹199
         </div>
         <div class="button buyNowDownload">
-            Get Instance Access
+            Get Instant Access
         </div>
     </div>
 
@@ -1552,7 +1559,7 @@
         <div class="logo">HOW TO ATTRACT WOMEN</div>
 
         <!-- ✅ id="menuBtn" matches the JS -->
-        <button class="menu_btn" id="menuBtn" onclick="toggleMenu()">☰</button>
+        {{-- <button class="menu_btn" id="menuBtn" onclick="toggleMenu()">☰</button> --}}
 
         <!-- ✅ all onclick="closeMenu()" — capital M -->
         <nav id="mainNav">
@@ -1781,7 +1788,7 @@
     <!-- Pricing -->
     <section id="pricing">
         <div style="text-align:center;margin-bottom:2.8rem">
-            <div class="section-label reveal" style="justify-content:center">GET INSTANCE ACCESS</div>
+            <div class="section-label reveal" style="justify-content:center">GET INSTANT ACCESS</div>
             <div class="section-title reveal">LIMITED TIME OFFER — <span class="yellow">ONLY FOR TODAY</span></div>
         </div>
         <div class="price-outer reveal">
