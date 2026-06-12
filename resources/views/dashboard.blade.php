@@ -661,7 +661,7 @@ const gridColor = '#F3F4F6';
 const rupee = v => '₹' + Number(v).toLocaleString('en-IN');
 
 /* 1 ── Monthly Revenue area */
-new Chart(document.getElementById('revenueChart'), {
+/*new Chart(document.getElementById('revenueChart'), {
   type: 'line',
   data: {
     labels: months,
@@ -687,7 +687,39 @@ new Chart(document.getElementById('revenueChart'), {
            ticks: { callback: v => '₹' + (v >= 1000 ? Math.round(v/1000)+'k' : v) } }
     }
   }
+});*/
+
+const chartLabels = @json($chartLabels);
+// const chartRevenue = @json($chartRevenue);
+
+new Chart(document.getElementById('revenueChart'), {
+  type: 'line',
+  data: {
+    labels: chartLabels,
+    datasets: [{
+      label: 'Revenue',
+      data: chartRevenue,
+      borderColor: '#4F46E5',
+      backgroundColor: 'rgba(79,70,229,0.07)',
+      fill: true, tension: 0.4,
+      pointBackgroundColor: '#4F46E5',
+      pointRadius: 4, pointHoverRadius: 6, borderWidth: 2
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    plugins: {
+      legend: { display: false },
+      tooltip: { callbacks: { label: ctx => ' ' + rupee(ctx.parsed.y) } }
+    },
+    scales: {
+      x: { grid: { color: gridColor }, ticks: { autoSkip: false, maxRotation: 0 } },
+      y: { grid: { color: gridColor }, beginAtZero: true,
+           ticks: { callback: v => '₹' + (v >= 1000 ? Math.round(v/1000)+'k' : v) } }
+    }
+  }
 });
+
 
 /* 2 ── Traffic donut */
 new Chart(document.getElementById('trafficDonut'), {

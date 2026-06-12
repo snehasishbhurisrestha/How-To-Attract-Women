@@ -106,7 +106,7 @@ class DashboardController extends Controller
             ]);
 
         // Date Filter
-        $filter = $request->get('date_filter', 'today');
+        $filter = $request->get('date_filter', '3_months');
 
         $orderFilter = Order::query();
         $visitorFilter = Visitor::query();
@@ -203,12 +203,156 @@ class DashboardController extends Controller
             ->get();
 
         // Monthly Revenue Chart (Current Year)
+        // $chartRevenue = [];
+        // for ($month = 1; $month <= 12; $month++) {
+        //     $chartRevenue[] = (float) Order::where('payment_status', 'paid')
+        //         ->whereYear('created_at', now()->year)
+        //         ->whereMonth('created_at', $month)
+        //         ->sum('amount');
+        // }
+
+        // Revenue Chart Based On Filter
+        $chartLabels = [];
         $chartRevenue = [];
-        for ($month = 1; $month <= 12; $month++) {
-            $chartRevenue[] = (float) Order::where('payment_status', 'paid')
-                ->whereYear('created_at', now()->year)
-                ->whereMonth('created_at', $month)
-                ->sum('amount');
+
+        switch ($filter) {
+
+            case 'today':
+
+                for ($hour = 0; $hour < 24; $hour++) {
+
+                    $chartLabels[] = sprintf('%02d:00', $hour);
+
+                    $chartRevenue[] = (float) Order::where('payment_status', 'paid')
+                        ->whereDate('created_at', today())
+                        // ->whereHour('created_at', $hour)
+                        ->whereRaw('HOUR(created_at) = ?', [$hour])
+                        ->sum('amount');
+                }
+
+                break;
+
+            case '30_days':
+
+                for ($i = 29; $i >= 0; $i--) {
+
+                    $date = now()->subDays($i);
+
+                    $chartLabels[] = $date->format('d M');
+
+                    $chartRevenue[] = (float) Order::where('payment_status', 'paid')
+                        ->whereDate('created_at', $date->toDateString())
+                        ->sum('amount');
+                }
+
+                break;
+
+            case '3_months':
+
+                for ($i = 2; $i >= 0; $i--) {
+
+                    $date = now()->subMonths($i);
+
+                    $chartLabels[] = $date->format('M Y');
+
+                    $chartRevenue[] = (float) Order::where('payment_status', 'paid')
+                        ->whereYear('created_at', $date->year)
+                        ->whereMonth('created_at', $date->month)
+                        ->sum('amount');
+                }
+
+                break;
+
+            case '6_months':
+
+                for ($i = 5; $i >= 0; $i--) {
+
+                    $date = now()->subMonths($i);
+
+                    $chartLabels[] = $date->format('M Y');
+
+                    $chartRevenue[] = (float) Order::where('payment_status', 'paid')
+                        ->whereYear('created_at', $date->year)
+                        ->whereMonth('created_at', $date->month)
+                        ->sum('amount');
+                }
+
+                break;
+
+            case '1_year':
+
+                for ($i = 11; $i >= 0; $i--) {
+
+                    $date = now()->subMonths($i);
+
+                    $chartLabels[] = $date->format('M Y');
+
+                    $chartRevenue[] = (float) Order::where('payment_status', 'paid')
+                        ->whereYear('created_at', $date->year)
+                        ->whereMonth('created_at', $date->month)
+                        ->sum('amount');
+                }
+
+                break;
+
+            case 'custom':
+
+                if ($request->filled('from_date') && $request->filled('to_date')) {
+
+                    $from = Carbon::parse($request->from_date);
+                    $to   = Carbon::parse($request->to_date);
+
+                    while ($from <= $to) {
+
+                        $chartLabels[] = $from->format('d M');
+
+                        $chartRevenue[] = (float) Order::where('payment_status', 'paid')
+                            ->whereDate('created_at', $from->toDateString())
+                            ->sum('amount');
+
+                        $from->addDay();
+                    }
+                }
+
+                break;
+
+            case 'all_time':
+
+                $firstOrder = Order::oldest('created_at')->first();
+
+                if ($firstOrder) {
+
+                    $start = $firstOrder->created_at->copy()->startOfMonth();
+                    $end   = now()->copy()->endOfMonth();
+
+                    while ($start <= $end) {
+
+                        $chartLabels[] = $start->format('M Y');
+
+                        $chartRevenue[] = (float) Order::where('payment_status', 'paid')
+                            ->whereYear('created_at', $start->year)
+                            ->whereMonth('created_at', $start->month)
+                            ->sum('amount');
+
+                        $start->addMonth();
+                    }
+                }
+
+                break;
+
+            default:
+
+                for ($hour = 0; $hour < 24; $hour++) {
+
+                    $chartLabels[] = sprintf('%02d:00', $hour);
+
+                    $chartRevenue[] = (float) Order::where('payment_status', 'paid')
+                        ->whereDate('created_at', today())
+                        ->whereHour('created_at', $hour)
+                        ->sum('amount');
+                }
+
+                break;
         }
 
         // Monthly Visitor Chart (Current Year)
@@ -247,6 +391,8 @@ class DashboardController extends Controller
             'conversionRate',
             'recentOrders',
             'recentVisitors',
+            // 'chartRevenue',
+            'chartLabels',
             'chartRevenue',
             'chartVisitors',
             'deviceStats',
