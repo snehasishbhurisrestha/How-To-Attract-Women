@@ -333,7 +333,7 @@
 
     <div class="content">
         @php
-        $currentFilter = request('date_filter', 'today');
+        $currentFilter = request('date_filter', '3_months');
         @endphp
 
         <div class="date-filters mb-3">

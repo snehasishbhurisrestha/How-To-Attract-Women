@@ -204,7 +204,7 @@
             padding: 0 2.5rem;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             height: 66px;
             animation: slideDown .6s ease
         }
@@ -1562,12 +1562,12 @@
         {{-- <button class="menu_btn" id="menuBtn" onclick="toggleMenu()">☰</button> --}}
 
         <!-- ✅ all onclick="closeMenu()" — capital M -->
-        <nav id="mainNav">
+        {{-- <nav id="mainNav">
             <a href="#learn" onclick="closeMenu()">Kya Sikhoge</a>
             <a href="#pricing" onclick="closeMenu()">Enroll</a>
             <a href="#about" onclick="closeMenu()">About</a>
             <a href="#faq" onclick="closeMenu()">FAQ</a>
-        </nav>
+        </nav> --}}
     </header>
 
     <!-- HERO -->
